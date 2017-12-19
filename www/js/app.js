@@ -1,5 +1,5 @@
 'use strict';
-angular.module('starter', ['ionic', 'ionic.cloud', 'controllers', 'services', 'ionic-toast', 'ngStorage'])
+angular.module('chews', ['ionic', 'ionic.cloud', 'controllers', 'services', 'ionic-toast', 'ngStorage'])
 	.run(function ($ionicPlatform) {
 		$ionicPlatform.ready(function () {
 			if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -49,105 +49,61 @@ angular.module('starter', ['ionic', 'ionic.cloud', 'controllers', 'services', 'i
 				}
 			})
 
-			.state('tab.sessions', {
-				url: '/sessions',
+			.state('tab.restaurants', {
+				url: '/restaurants',
 				views: {
-					'sessions-tab': {
-						templateUrl: 'templates/sessions.html',
-						controller: 'SessionCtrl'
+					'restaurants-tab': {
+						templateUrl: 'templates/restaurants.html',
+						controller: 'restaurantCtrl'
 					}
 				}
 			})
-			.state('tab.session-detail', {
-				url: '/sessions/:id',
-				views: {
-					'sessions-tab': {
-						templateUrl: 'templates/session-detail.html',
-						controller: 'SessionDetailCtrl'
-					}
-				}
-			})
-			.state('tab.rateSession', {
-				url: '/rateSession/:id',
-				views: {
-					'sessions-tab': {
-						templateUrl: 'templates/rate-session.html',
-						controller: 'ratingCtrl'
-					}
-				}
-			})
-      .state('tab.speaker-detail', {
-        url: '/speakerDetail/:id',
+      .state('tab.chews', {
+        url: '/chews',
         views: {
-          'sessions-tab': {
-            templateUrl: 'templates/speaker-detail.html',
-            controller: 'SpeakerDetailCtrl'
+          'chews-tab': {
+            templateUrl: 'templates/chews.html',
+            controller: 'chewsCtrl'
           }
         }
       })
-			.state('tab.schedule', {
-				url: '/schedule',
-				views: {
-					'schedule-tab': {
-						templateUrl: 'templates/schedule.html',
-						controller: 'scheduleCtrl'
-					}
-				}
-			})
-			.state('tab.other', {
-				url: '/other',
-				views: {
-					'other-tab': {
-						templateUrl: 'templates/other.html',
-						controller: 'otherCtrl'
-					}
-				}
-			})
-			.state('tab.map', {
-				url: '/other/map',
-				views: {
-					'other-tab': {
-						templateUrl: 'templates/map.html',
-						controller: 'otherCtrl'
-					}
-				}
-			})
-			.state('tab.session-questions', {
-				url: '/other/session-questions',
-				views: {
-					'other-tab': {
-						templateUrl: 'templates/session-questions.html',
-						controller: 'SessionCtrl'
-					}
-				}
-			})
-			.state('tab.question', {
-				url: '/other/question/:id',
-				views: {
-					'other-tab': {
-						templateUrl: 'templates/question.html',
-						controller: 'QuestionCtrl'
-					}
-				}
-			})
-      .state('tab.mentors', {
-        url: '/other/mentors',
+      .state('tab.manage', {
+        url: '/manage',
         views: {
-          'other-tab': {
-            templateUrl: 'templates/mentors.html',
-            controller: 'MentorCtrl'
+          'manage-tab': {
+            templateUrl: 'templates/manage.html',
+            controller: 'manageCtrl'
           }
         }
       })
-      .state('tab.mentor-detail', {
-        url: '/other/mentor-detail/:id',
-        views: {
-          'other-tab': {
-            templateUrl: 'templates/mentor-detail.html',
-            controller: 'MentorDetailCtrl'
-          }
-        }
-      });
+			.state('tab.restaurant-detail', {
+				url: '/restaurants/:id',
+				views: {
+					'restaurants-tab': {
+						templateUrl: 'templates/restaurant-detail.html',
+						controller: 'restaurantDetailCtrl'
+					}
+				}
+			})
+			.state('tab.add-restaurant', {
+				url: '/restaurant/:id',
+				views: {
+					'manage-tab': {
+						templateUrl: 'templates/add-restaurant.html',
+						controller: 'addRestaurantCtrl'
+					}
+				}
+			})
+			.state('tab.remove-restaurant', {
+				url: '/restaurant/:id',
+				views: {
+					'manage-tab': {
+						templateUrl: 'templates/remove-restaurant.html',
+						controller: 'removeRestaurantCtrl'
+					}
+				}
+			});
+
 
 		$urlRouterProvider.otherwise('/tab/home');
 	});

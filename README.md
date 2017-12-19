@@ -35,7 +35,7 @@ HelpMeChews is currently extended with the following plugins. Instructions on ho
 
 | Plugin | Docs |
 | ------ | ------ |
-| Ionic v1 | [https://ionicframework.com/docs/v1/] [PlDb] |
+| Ionic v1 | https://ionicframework.com/docs/v1/ |
 
 ### Development
 Created by JJ Berrett LLC

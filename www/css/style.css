@@ -169,3 +169,7 @@ div.spinner {
     width: 100%;
     vertical-align: middle;
 }
+
+.bar-positive {
+    color: green;
+}

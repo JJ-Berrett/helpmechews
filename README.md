@@ -26,7 +26,7 @@ $ npm install -g cordova
 To start the app on local host:
 
 ```sh
-$ npm serve ionic
+$ ionic serve
 ```
 
 ### Plugins

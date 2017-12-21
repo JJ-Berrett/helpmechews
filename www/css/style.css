@@ -1,5 +1,5 @@
 .grey-text {
-    color: #34383B;
+  color: #34383B;
 }
 
 div.spinner {
@@ -12,4 +12,76 @@ div.spinner {
 .spinner svg {
   width: 19% !important;
   height: 85px !important;
+}
+
+.grey-text-session {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #34383B;
+}
+
+.grey-text {
+  color: #7B868C;
+}
+
+.session-detail-speaker {
+  color: #7B868C;
+  font-style: italic;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.home-container {
+  display: -webkit-flex;
+  -webkit-flex-direction: column;
+  height: 80%;
+}
+
+.home-container > .row {
+  -webkit-flex: 1.5;
+}
+
+.header {
+  -webkit-flex: 1 !important;
+  -webkit-align-items: center;
+  /*background-image: url("../img/logo-alpha.png");*/
+  /*background-repeat: repeat;*/
+  /*background-position: center;*/
+  /*background-attachment: fixed;*/
+}
+
+.icon-row {
+  -webkit-align-items: center;
+}
+
+.detail-button-container {
+  display: -webkit-flex;
+  justify-content: center;
+  /*-webkit-flex-direction: row;*/
+}
+
+.detail-button {
+  margin-right: 10px;
+}
+
+.schedule-button-container{
+  display: -webkit-flex;
+  justify-content: flex-end;
+}
+
+.transparent {
+  background: transparent !important;
+}
+
+/* Fix modal backdrop for smaller devices */
+@media (max-width: 679px) {
+  .active .modal-backdrop-bg {
+    opacity: .5;
+  }
+  .modal-backdrop-bg {
+    -webkit-transition: opacity 300ms ease-in-out;
+    transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+  }
 }

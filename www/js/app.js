@@ -72,7 +72,6 @@ angular.module('chews', ['ionic', 'ionic.cloud', 'controllers', 'services', 'ion
         views: {
           'manage-tab': {
             templateUrl: 'templates/manage.html',
-            controller: 'manageCtrl'
           }
         }
       })

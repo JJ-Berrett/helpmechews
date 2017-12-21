@@ -1,113 +1,76 @@
 angular.module('services', [])
-  .service("sessionsSrvc", function ($http, $localStorage) {
+  .service("restaurantSrvc", function ($http, $localStorage) {
 
-    if(!$localStorage.sessions){
-      $localStorage.sessions = [];
+    if (!$localStorage.restaurants) {
+      $localStorage.restaurants = [];
     }
-    if(!$localStorage.schedule){
-      $localStorage.schedule = [];
-    }
-    if(!$localStorage.mentors){
-      $localStorage.mentors = [];
-    }
-    
-    var schedule = $localStorage.schedule;
 
-    this.getSessions = function () {
-      return $http.get('https://admin.jjberrett.com/api/sessions')
-    };
+    this.createRestaurant = (restaurant) => {
+      getRestaurants()
+      .then((res) => {
+        if (res.status !== 500) {
+          let existingRestaurant = res.data.find(function (existingRest) {
+            return existingRest.name === restaurant.name
+          });
 
-    this.setSessions = function (_sessions) {
-      $localStorage.sessions = _sessions;
-    };
-
-    this.setMentors = function (_mentors) {
-      $localStorage.mentors = _mentors
-    };
-
-    this.getSession = function (id) {
-      return $localStorage.sessions.find(function (session) {
-        return session.id === parseInt(id);
+          if (!existingRestaurant)
+            return $http.post('Http://localhost:8085/api/restaurant', restaurant)
+            .then((res) => {
+              if (res.status !== 500) {
+                $localStorage.restaurants.push(res.data.name);
+                return { status: res.status, message: `Added Restaurant: ${res.data.name} successfully!`, data: null};
+              }
+              else {
+                return {
+                  status: res.status,
+                  response: {
+                    message: `There was an error creating restaurant. Close the app and try again.`,
+                    data: null
+                  }
+                };
+              }
+            });
+          return {status: 409, message: `${ restaurant.name } already exists!`, data: null};
+        }
       })
-    };
+    }
 
-    this.addToSchedule = function (id) {
-      var response = {};
-      var scheduledSession = $localStorage.sessions.find(function (session) {
-        return session.id === parseInt(id);
+    this.getRestaurants = () => {
+      return $http.get('Http://localhost:8085/api/restaurants')
+      .then((res) => {
+        if (res.status !== 500) {
+          $localStorage.restaurants = res.data;
+          return {status: res.status, message: null, data: res.data};
+        }
+        else {
+          return {
+            status: res.status,
+            response: {message: `There was an error getting the restaurants. Close the app and try again.`},
+            data: res
+          };
+        }
       });
+    }
 
-      var sessionId = schedule.find(function (session) {
-        return session.id === scheduledSession.id
-      });
-
-      var sessionType = schedule.find(function (session) {
-        return session.sessiontype === scheduledSession.sessiontype
-      });
-
-
-      if (!sessionId && !sessionType) {
-        response.sessionId = true;
-        schedule.push(scheduledSession);
-        $localStorage.schedule = schedule;
-      }
-      else if (sessionId && sessionType) {
-        response.sessionId = false;
-      }
-      else if (sessionType && !sessionId) {
-        response.sessionType = true;
-      }
-      return response;
-    };
-
-    this.getSchedule = function () {
-      if (schedule.length > 0) {
-        return schedule
-      }
-      else {
-        return false;
-      }
-    };
-
-    this.submitReview = function (session) {
-      return $http.post('https://admin.jjberrett.com/api/review', session)
-        .then(function (res) {
-          return res;
-        })
-    };
-
-		function removeSessionFromSchedule(array, id, sessionId) {
-			var i = array.length;
-			while (i--) {
-				if (array[i]
-					&& array[i].hasOwnProperty(id)
-					&& (arguments.length > 2 && array[i][id] === parseInt(sessionId.id))) {
-
-					array.splice(i, 1);
-				}
-			}
-		}
-
-    this.removeFromSchedule = function (sessionId) {
-      removeSessionFromSchedule(schedule, "id", sessionId);
-      $localStorage.schedule = schedule;
-    };
-
-		this.sendQuestion = function (question) {
-			return $http.post('admin.jjberrett.com/api/questions', question)
-				.then(function (res) {
-					return res;
-				})
-		};
-
-		this.getMentors = function () {
-      return $http.get('https://admin.jjberrett.com/api/mentors')
-    };
-
-    this.getMentor = function (id) {
-      return $localStorage.mentors.find(function (mentor) {
-        return mentor.id === parseInt(id);
+    this.getRestaurant = (id) => {
+      return $localStorage.restaurants.find(function (restaurant) {
+        return restaurant.id == parseInt(id);
       })
-    };
+    }
 
+    this.deleteRestaurant = (id) => {
+      return $http.post('http://localhost:8085/api/restaurant', id)
+      .then((res) => {
+        if (res.status !== 500) {
+          return {status: res.status, response: {message: 'Deleted Successfully', data: null}};
+        }
+        else {
+          return {
+            status: res.status,
+            response: {message: `There was an error deleting the restaurant. Close the app and try again.`},
+            data: res
+          };
+        }
+      });
+    }
   });

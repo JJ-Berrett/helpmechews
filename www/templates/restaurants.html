@@ -11,15 +11,13 @@
                 <div class="container spinner" ng-if="loading"><ion-spinner icon="android"></ion-spinner></div>
 
 
-                <div class="" ng-repeat-start="mappedSession in mappedSessions">
-                    {{mappedSession.sessionType}} ({{mappedSession.sessionTime}})
+                <div class="item positive item-divider-ios" ng-repeat-start="mappedType in mappedRestaurantTypes | orderBy: 'mappedType'">
+                    <h2 class="positive">{{mappedType.type}}</h2>
                     <ion-nav-view name="restaurants-tab"></ion-nav-view>
                 </div>
-                <div class="item item-text-wrap item-icon-right" ng-repeat="session in mappedSession.sessions | filter: searchText"
-                     ui-sref='tab.restaurant-detail({id:session.id})'>
-                    <h2 class="positive">{{session.title}}</h2>
-                    <!--<h4 class="session-detail-speaker">{{session.speakername}}</h4>-->
-                    <!--<h4 class="session-detail-speaker">#{{session.demographic}}</h4>-->
+                <div class="item item-text-wrap item-icon-right" ng-repeat="restaurant in mappedType.restaurants | filter: searchText"
+                     ui-sref='tab.restaurant-detail({id:restaurant.id})'>
+                    <h3 class="grey-text">{{restaurant.name}}</h3>
                     <i class="icon ion-chevron-right icon-accessory"></i>
                 </div>
                 <div ng-repeat-end></div>

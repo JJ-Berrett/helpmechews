@@ -1,6 +1,6 @@
 {
-  "name": "northStar",
-  "app_id": "ec05e39b",
+  "name": "helpmechews",
+  "app_id": "7CZ2U45JKJ",
   "gulpStartupTasks": [
     "sass",
     "watch"

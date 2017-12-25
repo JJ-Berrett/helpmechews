@@ -1,6 +1,6 @@
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "helpmechews",
+  "short_name": "helpmechews",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

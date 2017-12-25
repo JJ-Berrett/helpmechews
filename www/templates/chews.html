@@ -1,23 +1,26 @@
-<ion-view view-title="Lets Chews">
-  <ion-content class="has-header">
+<ion-view view-title="Restaurants">
+  <ion-content class="has-header" delegate-handle="stickyScroll" onload="updatePage">
     <ion-list>
-        <div class=" text-center">
-            <button ng-click="sendSms()"  class="button button-positive button-clear"><i class="icon ion-ios-upload-outline"></i></button>
-            <div class="positive" style="font-size: 10px;">Share With Friends</div>
+      <div id="search-bar">
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper" id="search-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="text" placeholder="Search" ng-model="searchText">
+          </label>
         </div>
-      <ion-item class="padding item-text-wrap card icon-right" ng-repeat="session in scheduledSessions | orderBy: 'sessiontype'">
-          <h2 class="positive">{{session.title}}</h2>
-          <h3 class="positive">{{session.sessiontime}}</h3>
-          <h3 class="grey-text-italic">{{session.speaker}}</h3>
-          <h6 class="grey-text-session">{{session.sessiontype}} - <span style=" text-transform:none;">Room: {{session.room}}</span></h6>
-          <div class="schedule-button-container ">
-              <!--buttons text-right-->
-              <button class="button button-clear" ng-click="removeFromSchedule({id:session.id})"><i class=" positive icon ion-ios-trash-outline"></i> </button>
-              <button class="button button-clear" ui-sref='tab.session-detail({id:session.id})'><i class=" padding-left positive icon ion-ios-arrow-thin-right"></i></button>
-          </div>
+        <!--<div class="container spinner" ng-if="loading"><ion-spinner icon="android"></ion-spinner></div>-->
 
-        <ion-nav-view name="singleSession-tab"></ion-nav-view>
-      </ion-item>
+
+        <div class="item positive item-divider-ios" ng-repeat-start="mappedType in mappedRestaurantTypes | orderBy: 'mappedType'">
+          <h2 class="positive">{{mappedType.type}}</h2>
+          <ion-nav-view name="restaurants-tab"></ion-nav-view>
+        </div>
+        <div class="item item-text-wrap item-icon-right" ng-repeat="restaurant in mappedType.restaurants | filter: searchText">
+          <h3 class="grey-text" ng-click="pickedRestaurant(restaurant)">{{restaurant.name}}</h3>
+          <i class="icon icon-accessory"></i>
+        </div>
+        <div ng-repeat-end></div>
+      </div>
     </ion-list>
   </ion-content>
 </ion-view>

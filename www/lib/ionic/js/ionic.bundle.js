@@ -19885,8 +19885,8 @@ function $CacheFactoryProvider() {
  * Adding via the `$templateCache` service:
  *
  * ```js
- * var myApp = angular.module('myApp', []);
- * myApp.run(function($templateCache) {
+ * var myapp = angular.module('myapp', []);
+ * myapp.run(function($templateCache) {
  *   $templateCache.put('templateId.html', 'This is the content of the template');
  * });
  * ```
@@ -24877,7 +24877,7 @@ function $HttpProvider() {
  * Replace or decorate this service to create your own custom XMLHttpRequest objects.
  *
  * ```
- * angular.module('myApp', [])
+ * angular.module('myapp', [])
  * .factory('$xhrFactory', function() {
  *   return function createXhr(method, url) {
  *     return new window.XMLHttpRequest({mozSystem: true});
@@ -31008,7 +31008,7 @@ function adjustMatchers(matchers) {
  * Here is what a secure configuration for this scenario might look like:
  *
  * ```
- *  angular.module('myApp', []).config(function($sceDelegateProvider) {
+ *  angular.module('myapp', []).config(function($sceDelegateProvider) {
  *    $sceDelegateProvider.resourceUrlWhitelist([
  *      // Allow same origin resource loads.
  *      'self',
@@ -31551,7 +31551,7 @@ function $SceDelegateProvider() {
  * That said, here's how you can completely disable SCE:
  *
  * ```
- * angular.module('myAppWithSceDisabledmyApp', []).config(function($sceProvider) {
+ * angular.module('myappWithSceDisabledmyapp', []).config(function($sceProvider) {
  *   // Completely disable SCE.  For demonstration purposes only!
  *   // Do not use in new projects.
  *   $sceProvider.enabled(false);
@@ -49229,14 +49229,14 @@ angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
  * 
  * <pre>
  * <!doctype html>
- * <html ng-app="myApp">
+ * <html ng-app="myapp">
  * <head>
  *   <script src="js/angular.js"></script>
  *   <!-- Include the ui-router script -->
  *   <script src="js/angular-ui-router.min.js"></script>
  *   <script>
  *     // ...and add 'ui.router' as a dependency
- *     var myApp = angular.module('myApp', ['ui.router']);
+ *     var myapp = angular.module('myapp', ['ui.router']);
  *   </script>
  * </head>
  * <body>
@@ -54730,9 +54730,9 @@ function($rootScope, $state, $location, $document, $ionicPlatform, $ionicHistory
  *
  * @usage
  * ```js
- * var myApp = angular.module('reallyCoolApp', ['ionic']);
+ * var myapp = angular.module('reallyCoolApp', ['ionic']);
  *
- * myApp.config(function($ionicConfigProvider) {
+ * myapp.config(function($ionicConfigProvider) {
  *   $ionicConfigProvider.views.maxCache(5);
  *
  *   // note that you can also chain configs
@@ -55410,7 +55410,7 @@ var LOADING_TPL =
  *
  * @usage
  * ```js
- * var app = angular.module('myApp', ['ionic'])
+ * var app = angular.module('myapp', ['ionic'])
  * app.constant('$ionicLoadingConfig', {
  *   template: 'Default Loading Template...'
  * });
@@ -57560,7 +57560,7 @@ IonicModule
  * in the `$state` definition
  *
  * ```js
- *   angular.module('myApp', ['ionic'])
+ *   angular.module('myapp', ['ionic'])
  *   .config(function($stateProvider, $ionicConfigProvider) {
  *
  *     // disable preemptive template caching globally
@@ -58384,13 +58384,13 @@ function($timeout, $document, $q, $ionicClickBlock, $ionicConfig, $ionicNavBarDe
  * For example:
  *
  * ```
- * angular.module('myApp', ['ngRoute'])`
+ * angular.module('myapp', ['ngRoute'])`
  * ```
  *
  * becomes
  *
  * ```
- * angular.module('myApp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
+ * angular.module('myapp', ['ngRoute', 'ngIOS9UIWebViewPatch'])
  * ```
  *
  *
@@ -65236,7 +65236,7 @@ IonicModule
  * Next, we need to setup our states that will be rendered.
  *
  * ```js
- * var app = angular.module('myApp', ['ionic']);
+ * var app = angular.module('myapp', ['ionic']);
  * app.config(function($stateProvider) {
  *   $stateProvider
  *   .state('index', {

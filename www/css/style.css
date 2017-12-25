@@ -20,6 +20,10 @@ div.spinner {
   color: #34383B;
 }
 
+.popupBox .popup-head h3 {
+  color: #174ea8
+}
+
 .grey-text {
   color: #7B868C;
 }

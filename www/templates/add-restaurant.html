@@ -6,16 +6,12 @@
         <input type="text" placeholder="Name" ng-model="restaurant.name">
       </label>
       <label class="item item-input item-stacked-label">
-        <span class="positive input-label">Google Map</span>
-        <input type="text" placeholder="<iframe src='https://www.google.com/maps/...'" ng-model="restaurant.google_url">
-      </label>
-      <label class="item item-input item-stacked-label">
         <span class="positive input-label">Type</span>
-        <textarea placeholder="Mexican, Chinese, Burgers..." ng-model="restaurant.type"></textarea>
+        <input type="text" placeholder="Mexican, Chinese, Burgers..." ng-model="restaurant.type">
       </label>
     </div>
     <div class="padding">
-      <button class="button button-block button-positive button-outline" ng-click="addRestaurant(restaurant)"
+      <button class="button button-block button-positive button-block" ng-click="addRestaurant(restaurant)"
               ui-sref="tab.manage">Submit
       </button>
     </div>

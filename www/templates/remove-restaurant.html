@@ -1,5 +1,5 @@
 <ion-view view-title="Remove a Restaurant">
-  <ion-content class="has-header" delegate-handle="stickyScroll">
+  <ion-content class="has-header" delegate-handle="stickyScroll" onload="updatePage">
     <ion-list>
       <div id="search-bar">
         <div class="item item-input-inset">
@@ -11,16 +11,12 @@
         <div class="container spinner" ng-if="loading"><ion-spinner icon="android"></ion-spinner></div>
 
 
-        <div class="item positive item-divider-ios" ng-repeat-start="mappedSession in mappedSessions | orderBy: 'sessionType'">
-          {{mappedSession.sessionType}} ({{mappedSession.sessionTime}})
+        <div class="item positive item-divider-ios" ng-repeat-start="mappedType in mappedRestaurantTypes | orderBy: 'mappedType'">
+          <h2 class="positive">{{mappedType.type}}</h2>
           <ion-nav-view name="restaurants-tab"></ion-nav-view>
         </div>
-        <div class="item item-text-wrap item-icon-right" ng-repeat="session in mappedSession.sessions | filter: searchText"
-             ui-sref='tab.restaurant-detail({id:session.id})'>
-          <h2 class="grey-text">{{session.title}}</h2>
-          <h4 class="session-detail-speaker">{{session.speakername}}</h4>
-          <h4 class="session-detail-speaker">#{{session.demographic}}</h4>
-          <i class="icon ion-chevron-right icon-accessory"></i>
+        <div class="item item-text-wrap item-icon-right" ng-repeat="restaurant in mappedType.restaurants | filter: searchText">
+          <h3 class="grey-text" ng-click="removeRestaurant(restaurant)">{{restaurant.name}}</h3>
         </div>
         <div ng-repeat-end></div>
       </div>

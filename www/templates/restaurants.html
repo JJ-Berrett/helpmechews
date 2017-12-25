@@ -1,5 +1,5 @@
 <ion-view view-title="Restaurants">
-    <ion-content class="has-header" delegate-handle="stickyScroll">
+    <ion-content class="has-header" delegate-handle="stickyScroll" onload="updatePage">
         <ion-list>
             <div id="search-bar">
                 <div class="item item-input-inset">
@@ -15,10 +15,9 @@
                     <h2 class="positive">{{mappedType.type}}</h2>
                     <ion-nav-view name="restaurants-tab"></ion-nav-view>
                 </div>
-                <div class="item item-text-wrap item-icon-right" ng-repeat="restaurant in mappedType.restaurants | filter: searchText"
-                     ui-sref='tab.restaurant-detail({id:restaurant.id})'>
+                <div class="item item-text-wrap item-icon-right" ng-repeat="restaurant in mappedType.restaurants | filter: searchText">
                     <h3 class="grey-text">{{restaurant.name}}</h3>
-                    <i class="icon ion-chevron-right icon-accessory"></i>
+                    <i class="icon icon-accessory"></i>
                 </div>
                 <div ng-repeat-end></div>
             </div>
